@@ -164,7 +164,7 @@ module.exports = {
         prependToBody: false,
         color: `#000000`,
         footerHeight: 50,
-        includePaths: [{ regex: "^/blog" }],
+        includePaths: [{ regex: '^/blog' }],
       },
     },
     `gatsby-plugin-dark-mode`,
@@ -172,7 +172,6 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-lodash`,
     `gatsby-transformer-sharp`,
   ],
 }
