@@ -1,0 +1,57 @@
+backend:
+  name: github
+  repo: bottlehs/gatsby-starter-company-blog
+  branch: main
+  base_url: https://api.netlify.com
+  site_domain: gatsby-starter-company-blog.netlify.app
+  auth_endpoint: auth
+  api_root: https://api.github.com
+
+media_folder: static/assets
+public_folder: /assets
+
+collections:
+  - name: notifications
+    label: Notifications
+    files:
+      - name: notifications
+        label: Notifications
+        file: site/data/notifications.yml
+        description: Site-top notifications - publish one at a time
+        fields:
+          - name: notifications
+            label: Notifications
+            widget: list
+            fields:
+              - { label: Title, name: title, widget: string, tagname: h1 }
+              - { label: Published, name: published, widget: boolean }
+              - { label: Loud, name: loud, widget: boolean }
+              - { label: Message, name: message, widget: text }
+              - { label: URL, name: url }
+  - name: blog
+    label: Blog
+    folder: content/posts/blog
+    create: true
+    slug: '{{category}}/{{slug}}/index'
+    fields:
+      - {
+          label: 'Template Key',
+          name: 'templateKey',
+          widget: 'hidden',
+          default: 'blog-post',
+        }
+      - { label: 'draft', name: 'draft', widget: 'hidden', default: false }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Category', name: 'category', widget: 'string' }
+      - { label: 'Description', name: 'description', widget: 'text' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - { label: 'Tags', name: 'tags', widget: 'list' }
+      - label: Featured Image
+        name: thumbnail
+        widget: image
+        hint: 'Image size 1280x800 works best :)'
+        required: false
+        media_library:
+          config:
+            multiple: false
