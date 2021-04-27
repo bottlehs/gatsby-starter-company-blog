@@ -96,7 +96,7 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { category: { ne: null }, draft: { eq: false } } }
+      filter: { frontmatter: { category: { eq: "news" }, draft: { eq: false } } }
     ) {
       nodes {
         excerpt
@@ -111,7 +111,7 @@ export const pageQuery = graphql`
           tags
           thumbnail
           writer
-          writerPicture          
+          writerPicture
         }
       }
     }

@@ -66,7 +66,7 @@ const Bio = () => {
         <div>
           <p>
             Written by{" "}
-            <Link to={"/about"} className="bio-avatar-name">
+            <Link to={"/"} className="bio-avatar-name">
               @{author.name}
             </Link>{" "}
           </p>

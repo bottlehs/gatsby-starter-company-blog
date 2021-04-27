@@ -123,8 +123,9 @@ src
 │   └── tag.js
 ├── pages
 │   ├── 404.js
-│   ├── about.js
 │   ├── index.js
+│   ├── news.js
+│   ├── tech.js
 │   └── tags.js
 │── normalize.css
 │── style.css

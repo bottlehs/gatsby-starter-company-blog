@@ -4,8 +4,10 @@ title: The Gilt-Bronze Incense Burner of Baekje
 date: 2021-04-13T20:10:26.956Z
 description: The gilt-bronze incense burner is a symbol of Baekje culture. The burner shows the ideal world of Baekje people. It contains Buddhism, Taoism, and Yin-Yang theory. Also it shows their skillful techniques.
 draft: false
-category: 'korean'
+category: 'news'
 thumbnail: /assets/the-gilt-bronze-incense-burner-of-baekje.jpg
+writer: 'Writer Name'
+writerPicture: ''
 tags:
   - korean
 ---

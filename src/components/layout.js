@@ -40,13 +40,13 @@ const Layout = ({ location, title, children }) => {
           <div className="menu">
             <ul>
               <li>
-                <Link className="" to="/">
-                  Blog
+                <Link className="" to="/tech">
+                  Tech
                 </Link>
               </li>
               <li>
-                <Link className="" to="/about">
-                  About
+                <Link className="" to="/news">
+                  News
                 </Link>
               </li>
             </ul>
