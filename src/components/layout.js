@@ -9,7 +9,7 @@ const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   console.log(location.pathname)
   const isRootPath =
-    location.pathname === rootPath || location.pathname === '/tags'
+    location.pathname === rootPath || location.pathname === '/tech' || location.pathname === '/news'
   let header
 
   if (isRootPath) {
@@ -87,8 +87,8 @@ const Layout = ({ location, title, children }) => {
         <footer>
           © {new Date().getFullYear()}, Built with
           {` `}
-          <a href="https://gatsby-starter-flat-blog.netlify.app">
-            Gatsby Starter Flat Blog
+          <a href="https://gatsby-starter-company-blog.netlify.app">
+            Gatsby Starter Company Blog
           </a>
         </footer>
       </div>

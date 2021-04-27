@@ -73,8 +73,7 @@ npm start
 
 You can write...
 
-- contents to blog in `content/blog` directory.
-- resume `content/__about` directory.
+- contents to blog in `content/posts` directory.
 
 > With markdown syntax and some meta data
 
