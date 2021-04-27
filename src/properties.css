@@ -62,5 +62,6 @@
   --color-heading-black: black;
   --color-accent: #d1dce5;
   --color-white: #ffffff;
+  --color-tag-bg: rgb(242, 242, 242);
   --color-tag: rgba(117, 117, 117, 1);
 }
