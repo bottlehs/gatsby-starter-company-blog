@@ -32,30 +32,45 @@ const TagsPage = ({ data, location }) => {
       <ol style={{ listStyle: `none` }}>
         {tags.map(tag => {
           return (
-            <li key={tag.fieldValue}>
+            <li key={post.fields.slug}>
               <article
-                className="tag-list-item"
+                className="post-list-item"
                 itemScope
                 itemType="http://schema.org/Article"
               >
                 <header>
                   <h2>
-                    <Link
-                      to={`/tags/${kebabCase(tag.fieldValue)}/`}
-                      itemProp="url"
-                      title={tag.fieldValue}
-                    >
-                      <span itemProp="headline">{tag.fieldValue}</span>
+                    <Link to={post.fields.slug} itemProp="url" title={title}>
+                      <span itemProp="headline">{title}</span>
                     </Link>
                   </h2>
+                  <small>{post.frontmatter.date}</small>
                 </header>
                 <section>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: tag.totalCount + " posts" || 0,
-                    }}
-                    itemProp="count"
-                  />
+                  {post.frontmatter.thumbnail && (
+                    <div className="post-list-thumbnail">
+                      <img src={post.frontmatter.thumbnail} alt="" />
+                    </div>
+                  )}
+                  <div className="post-list-content">
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: post.frontmatter.description || post.excerpt,
+                      }}
+                      itemProp="description"
+                    />
+                    {post.frontmatter.tags && (
+                      <ul>
+                        {post.frontmatter.tags.map((tag) => {
+                          return (
+                            <li key={tag}>
+                              <a href={`/tags/${kebabCase(tag)}/`}>{tag}</a>
+                            </li>
+                          )
+                        })}
+                      </ul>
+                    )}
+                  </div>
                 </section>
               </article>
             </li>
