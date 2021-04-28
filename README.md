@@ -8,11 +8,7 @@
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/bottlehs/gatsby-starter-company-blog.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/bottlehs/gatsby-starter-company-blog/alerts/)
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/bottlehs/gatsby-starter-company-blog.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/bottlehs/gatsby-starter-company-blog/context:javascript)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/bottlehs/gatsby-starter-company-blog/issues)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/290a052e-7670-40bb-91e0-1192119e6955/deploy-status)](https://app.netlify.com/sites/gatsby-starter-company-blog/deploys)
-
-<a href="https://twitter.com/bottlehs">
-<img alt="Twitter: bottlehs" src="https://img.shields.io/twitter/follow/bottlehs.svg?style=social" target="_blank" />
-</a>
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c65d64a4-7243-4b54-9221-5964724b8251/deploy-status)](https://app.netlify.com/sites/gatsby-starter-company-blog/deploys)
 
 ![screenshot](./assets/screenshot.png)
 
