@@ -125,8 +125,11 @@ src
 │   ├── index.js
 │   ├── news.js
 │   ├── tech.js
+│   ├── search.js
 │   └── tags.js
 │── normalize.css
+│── properties.css
+│── properties.dark.css
 │── style.css
 │── style.dark.css
 └── templates

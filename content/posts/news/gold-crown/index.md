@@ -7,7 +7,6 @@ draft: false
 category: 'news'
 thumbnail: /assets/gold-crown.jpg
 writer: 'Writer Name'
-writerPicture: ''
 tags:
   - korean
 ---

@@ -7,7 +7,6 @@ draft: false
 category: 'tech'
 thumbnail: /assets/jamstack-cover.png
 writer: 'Writer Name'
-writerPicture: ''
 tags:
   - jamstack
   - netlify

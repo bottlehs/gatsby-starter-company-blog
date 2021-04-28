@@ -137,7 +137,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         )}
         <hr />
         <footer>
-          <Bio />
+          <Bio writer={{name:post.frontmatter.writer}} />
         </footer>
       </article>      
     </Layout>
@@ -171,6 +171,7 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         description
         tags
+        writer
       }
     }
   }

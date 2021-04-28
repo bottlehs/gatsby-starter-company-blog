@@ -7,7 +7,6 @@ draft: false
 category: 'news'
 thumbnail: /assets/tripitaka-koreana.jpg
 writer: 'Writer Name'
-writerPicture: ''
 tags:
   - korean
 ---

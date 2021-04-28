@@ -1,12 +1,7 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import { Link, graphql } from 'gatsby'
-import _ from 'lodash'
-import Bio from '../components/bio'
-import { Category } from '../components/category'
-import { useCategory } from '../hooks/useCategory'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import { CATEGORY_TYPE } from '../constants'
 
 // Utilities
 import kebabCase from 'lodash/kebabCase'
@@ -14,6 +9,7 @@ import kebabCase from 'lodash/kebabCase'
 const SearchPage = ({ data, location }) => {
   let query = location.search.split("=");
   query = query[1];
+  
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.nodes.filter(( { frontmatter }) => {
     const titleMatch = frontmatter.title
@@ -32,27 +28,10 @@ const SearchPage = ({ data, location }) => {
     return titleMatch || topicMatch || tagsMatch || descriptionMatch
   })
 
-  const categories = useMemo(
-    () => _.uniq(posts.map(({ frontmatter }) => frontmatter.category)),
-    []
-  )
-  const [category, selectCategory] = useCategory()  
-  const refinedPosts = useMemo(() =>
-    posts
-      .filter(
-        ({ frontmatter }) => {
-          return category === CATEGORY_TYPE.ALL ||
-          frontmatter.category === category
-        }
-      )
-      .slice(0, 1000 /*count * countOfInitialPost*/)
-  )
-
-  if (refinedPosts.length === 0) {
+  if (posts.length === 0) {
     return (
       <Layout location={location} title={siteTitle}>
         <SEO title={query} />
-        <Bio />
         <p>
           No blog posts found. Add markdown posts to "content/posts" (or the
           directory you specified for the "gatsby-source-filesystem" plugin in
@@ -64,16 +43,10 @@ const SearchPage = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="All posts" />
-      <Bio />
-      <Category
-        categories={categories}
-        category={category}
-        selectCategory={selectCategory}
-      />
+      <SEO title={query} />
       <div className="post-list-contaner">
         <ol style={{ listStyle: `none` }}>
-          {refinedPosts.map((post) => {
+          {posts.map((post) => {
             const title = post.frontmatter.title || post.fields.slug
 
             return (

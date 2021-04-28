@@ -1,6 +1,5 @@
 import React from "react"
 import PropTypes from "prop-types"
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
@@ -53,10 +52,6 @@ const Tags = ({ data, pageContext, location }) => {
           )
         })}
       </ol>
-      <hr />
-      <footer>
-        <Bio />
-      </footer>      
       <Link to="/tags">All tags</Link>
     </Layout>
   )

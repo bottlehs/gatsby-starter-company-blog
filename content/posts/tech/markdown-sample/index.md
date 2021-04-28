@@ -6,7 +6,6 @@ description: Markdown is a text-to-HTML conversion tool for web writers. Markdow
 draft: false
 category: 'tech'
 writer: 'Writer Name'
-writerPicture: ''
 tags:
   - markdown
 ---

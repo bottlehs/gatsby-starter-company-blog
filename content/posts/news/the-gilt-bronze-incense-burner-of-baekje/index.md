@@ -7,7 +7,6 @@ draft: false
 category: 'news'
 thumbnail: /assets/the-gilt-bronze-incense-burner-of-baekje.jpg
 writer: 'Writer Name'
-writerPicture: ''
 tags:
   - korean
 ---

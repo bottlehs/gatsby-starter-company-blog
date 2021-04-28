@@ -7,7 +7,6 @@ draft: false
 category: 'news'
 thumbnail: /assets/guardians-of-the-goguryeo-tomb.jpg
 writer: 'Writer Name'
-writerPicture: ''
 tags:
   - korean
 ---

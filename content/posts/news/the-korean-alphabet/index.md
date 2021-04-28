@@ -7,7 +7,6 @@ draft: false
 category: 'news'
 thumbnail: /assets/the-korean-alphabet.jpg
 writer: 'Writer Name'
-writerPicture: ''
 tags:
   - korean
 ---

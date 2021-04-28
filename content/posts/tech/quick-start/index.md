@@ -6,7 +6,6 @@ description: quickstart
 draft: false
 category: 'tech'
 writer: 'Writer Name'
-writerPicture: ''
 tags:
   - quickstart
 ---

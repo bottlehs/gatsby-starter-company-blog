@@ -17,7 +17,7 @@ import {
   faFacebookSquare,
 } from '@fortawesome/free-brands-svg-icons'
 
-const Bio = () => {
+const Bio = ({writer}) => {
   const data = useStaticQuery(graphql`
     query BioQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
@@ -44,6 +44,8 @@ const Bio = () => {
     }
   `)
 
+  console.log(writer);
+
   // Set these values by editing "siteMetadata" in gatsby-config.js
   const author = data.site.siteMetadata.author
   const social = data.site.siteMetadata.social
@@ -67,7 +69,7 @@ const Bio = () => {
           <p>
             Written by{" "}
             <Link to={"/"} className="bio-avatar-name">
-              @{author.name}
+              @{writer.name ? writer.name : author.name}
             </Link>{" "}
           </p>
           {author.summary && (

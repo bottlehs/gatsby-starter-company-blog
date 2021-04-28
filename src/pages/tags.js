@@ -15,7 +15,6 @@ const TagsPage = ({ data, location }) => {
     return (
       <Layout location={location} title={siteTitle}>
         <SEO title="All tags" />
-        <Bio />
         <p>
           No blog posts found. Add markdown posts to "content/posts" (or the
           directory you specified for the "gatsby-source-filesystem" plugin in
@@ -28,7 +27,6 @@ const TagsPage = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle + " Tags"}>
       <SEO title="All tags" />
-      <Bio />
       <ol style={{ listStyle: `none` }}>
         {tags.map(tag => {
           return (
