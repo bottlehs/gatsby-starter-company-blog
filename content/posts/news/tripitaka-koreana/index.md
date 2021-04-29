@@ -4,8 +4,9 @@ title: Tripitaka Koreana
 date: 2021-04-13T20:02:26.956Z
 description: The Wood block printing in Korea was superior to that of other countries. The UNESCO committee said "The Tripitaka Koreana is one of the most important and most complete Buddhist Scriptures in the world." It is listed in the UNESCO heritage.
 draft: false
-category: 'korean'
+category: 'news'
 thumbnail: /assets/tripitaka-koreana.jpg
+writer: 'Writer Name'
 tags:
   - korean
 ---

@@ -9,7 +9,7 @@ const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   console.log(location.pathname)
   const isRootPath =
-    location.pathname === rootPath || location.pathname === '/tags'
+    location.pathname === rootPath || location.pathname === '/tech' || location.pathname === '/news'
   let header
 
   if (isRootPath) {
@@ -40,13 +40,13 @@ const Layout = ({ location, title, children }) => {
           <div className="menu">
             <ul>
               <li>
-                <Link className="" to="/">
-                  Blog
+                <Link className="" to="/tech">
+                  Tech
                 </Link>
               </li>
               <li>
-                <Link className="" to="/about">
-                  About
+                <Link className="" to="/news">
+                  News
                 </Link>
               </li>
             </ul>
@@ -54,28 +54,20 @@ const Layout = ({ location, title, children }) => {
           <div className="theme">
             <ThemeToggler>
               {({ theme, toggleTheme }) => (
-                <Switch
-                  onChange={(e) =>
-                    toggleTheme(theme === 'dark' ? 'light' : 'dark')
-                  }
+                <div>
+                <input
+                  id="toggle"
+                  type="checkbox"
+                  onChange={e => toggleTheme(e.target.checked ? 'dark' : 'light')}
                   checked={theme === 'dark'}
-                  offColor="#b2dcf2"
-                  onColor="#423090"
-                  uncheckedIcon={
-                    <IconContext.Provider
-                      value={{ color: '#f4da87', className: 'theme-sun-icon' }}
-                    >
-                      <RiSunFill />
-                    </IconContext.Provider>
+                />{' '}
+                <label for="toggle">
+                  {theme === 'dark' 
+                    ? <RiSunFill />                  
+                    : <RiMoonClearFill />
                   }
-                  checkedIcon={
-                    <IconContext.Provider
-                      value={{ color: '#e7eee5', className: 'theme-moon-icon' }}
-                    >
-                      <RiMoonClearFill />
-                    </IconContext.Provider>
-                  }
-                />
+                </label>
+              </div>
               )}
             </ThemeToggler>
           </div>
@@ -87,8 +79,8 @@ const Layout = ({ location, title, children }) => {
         <footer>
           © {new Date().getFullYear()}, Built with
           {` `}
-          <a href="https://gatsby-starter-flat-blog.netlify.app">
-            Gatsby Starter Flat Blog
+          <a href="https://gatsby-starter-company-blog.netlify.app">
+            Gatsby Starter Company Blog
           </a>
         </footer>
       </div>

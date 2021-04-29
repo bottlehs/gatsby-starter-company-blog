@@ -4,7 +4,8 @@ title: Markdown Sample
 date: 2021-04-13T22:15:26.956Z
 description: Markdown is a text-to-HTML conversion tool for web writers. Markdown allows you to write using an easy-to-read, easy-to-write plain text format, then convert it to structurally valid XHTML (or HTML).
 draft: false
-category: 'etc'
+category: 'tech'
+writer: 'Writer Name'
 tags:
   - markdown
 ---

@@ -5,7 +5,7 @@ module.exports = {
     summary: `Your Company Summary`,
   },
   description: `Your Company Description`,
-  siteUrl: `https://gatsby-starter-flat-blog.netlify.app`,
+  siteUrl: `https://gatsby-starter-company-blog.netlify.app`,
   social: {
     github: `https://github.com/bottlehs`,
     instagram: `https://instagram.com`,

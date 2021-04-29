@@ -6,14 +6,32 @@ import SEO from '../components/seo'
 // Utilities
 import kebabCase from 'lodash/kebabCase'
 
-const BlogIndex = ({ data, location }) => {
+const SearchPage = ({ data, location }) => {
+  let query = location.search.split("=");
+  query = query[1];
+  
   const siteTitle = data.site.siteMetadata.title
-  const posts = data.allMarkdownRemark.nodes
+  const posts = data.allMarkdownRemark.nodes.filter(( { frontmatter }) => {
+    const titleMatch = frontmatter.title
+      .toLowerCase()
+      .includes(query.toLowerCase())
+    const topicMatch = frontmatter.category
+      .toLowerCase()
+      .includes(query.toLowerCase())
+    const tagsMatch = frontmatter.tags
+      .map(tag => tag.toLowerCase())
+      .some(tag => tag.includes(query.toLowerCase()))
+    const descriptionMatch = frontmatter.description
+      .toLowerCase()
+      .includes(query.toLowerCase())
+
+    return titleMatch || topicMatch || tagsMatch || descriptionMatch
+  })
 
   if (posts.length === 0) {
     return (
       <Layout location={location} title={siteTitle}>
-        <SEO title="All posts" />
+        <SEO title={query} />
         <p>
           No blog posts found. Add markdown posts to "content/posts" (or the
           directory you specified for the "gatsby-source-filesystem" plugin in
@@ -25,7 +43,7 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="All posts" />
+      <SEO title={query} />
       <div className="post-list-contaner">
         <ol style={{ listStyle: `none` }}>
           {posts.map((post) => {
@@ -82,7 +100,7 @@ const BlogIndex = ({ data, location }) => {
   )
 }
 
-export default BlogIndex
+export default SearchPage
 
 export const pageQuery = graphql`
   query {
@@ -107,7 +125,6 @@ export const pageQuery = graphql`
           description
           tags
           thumbnail
-          writer
         }
       }
     }

@@ -13,7 +13,7 @@ const BlogIndex = ({ data, location }) => {
   if (posts.length === 0) {
     return (
       <Layout location={location} title={siteTitle}>
-        <SEO title="All posts" />
+        <SEO title="All tech posts" />
         <p>
           No blog posts found. Add markdown posts to "content/posts" (or the
           directory you specified for the "gatsby-source-filesystem" plugin in
@@ -25,7 +25,7 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="All posts" />
+      <SEO title="All tech posts" />
       <div className="post-list-contaner">
         <ol style={{ listStyle: `none` }}>
           {posts.map((post) => {
@@ -93,7 +93,7 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { category: { ne: null }, draft: { eq: false } } }
+      filter: { frontmatter: { category: { eq: "tech" }, draft: { eq: false } } }
     ) {
       nodes {
         excerpt
