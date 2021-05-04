@@ -9,6 +9,9 @@ import kebabCase from 'lodash/kebabCase'
 const SearchPage = ({ data, location }) => {
   let query = location.search.split("=");
   query = query[1];
+  if ( !query ) {
+    query = '';
+  }
   
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.nodes.filter(( { frontmatter }) => {

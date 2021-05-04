@@ -50,7 +50,13 @@ const Bio = ({writer}) => {
   const author = data.site.siteMetadata.author
   const social = data.site.siteMetadata.social
   const avatar = data.avatar.childImageSharp.fixed
-  console.log(social);
+
+  if ( !writer ) {
+    writer = {};
+    writer.name = author.name;
+  } else if ( !writer.name ) {
+    writer.name = author.name;
+  }
 
   return (
     <div className="bio">
@@ -69,7 +75,7 @@ const Bio = ({writer}) => {
           <p>
             Written by{" "}
             <Link to={"/"} className="bio-avatar-name">
-              @{writer.name ? writer.name : author.name}
+              @{writer.name}
             </Link>{" "}
           </p>
           {author.summary && (
