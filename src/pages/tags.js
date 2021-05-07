@@ -1,12 +1,12 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React from 'react'
+import { Link, graphql } from 'gatsby'
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Bio from '../components/bio'
+import Layout from '../components/layout'
+import SEO from '../components/seo'
 
 // Utilities
-import kebabCase from "lodash/kebabCase"
+import kebabCase from 'lodash/kebabCase'
 
 const TagsPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
@@ -15,7 +15,6 @@ const TagsPage = ({ data, location }) => {
     return (
       <Layout location={location} title={siteTitle}>
         <SEO title="All tags" />
-        <Bio />
         <p>
           No blog posts found. Add markdown posts to "content/posts" (or the
           directory you specified for the "gatsby-source-filesystem" plugin in
@@ -26,11 +25,10 @@ const TagsPage = ({ data, location }) => {
   }
 
   return (
-    <Layout location={location} title={siteTitle + " Tags"}>
+    <Layout location={location} title={siteTitle + ' Tags'}>
       <SEO title="All tags" />
-      <Bio />
       <ol style={{ listStyle: `none` }}>
-        {tags.map(tag => {
+        {tags.map((tag) => {
           return (
             <li key={tag.fieldValue}>
               <article
@@ -52,7 +50,7 @@ const TagsPage = ({ data, location }) => {
                 <section>
                   <p
                     dangerouslySetInnerHTML={{
-                      __html: tag.totalCount + " posts" || 0,
+                      __html: tag.totalCount + ' posts' || 0,
                     }}
                     itemProp="count"
                   />

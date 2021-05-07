@@ -263,6 +263,14 @@ a:focus {
   margin-top: 0;
 }
 
+.navbar-container .menu ul li.rss-icon {
+  margin: 0px 0px 0px 20px;
+}
+
+.navbar-container .menu ul li.rss-icon a {
+  padding: 5px 0px;
+}
+
 .navbar-container .menu ul li {
   margin: 0px 20px;
   list-style: none;
@@ -288,6 +296,7 @@ a:focus {
 
 .theme {
   padding: var(--spacing-0) var(--spacing-5);
+  display: none;
 }
 
 .theme input {
@@ -555,6 +564,10 @@ a:focus {
   color: var(--color-text-light);
 }
 
+.blog-post-article {
+  position: relative;
+}
+
 .blog-post-nav {
   margin-bottom: var(--spacing-6);
 }
@@ -741,7 +754,7 @@ a:focus {
 nav.container {
   border-left: 2px solid rgb(233, 236, 239);
   position: sticky;
-  top: 70px;
+  top: 120px;
   display: block;
   max-width: 360px;
   margin-left: 5rem;
@@ -760,7 +773,7 @@ nav.container .title {
 
 nav.container .contents ul {
   list-style: none;
-  margin-left: 20px;
+  margin-left: 10px;
   margin-bottom: 0px;
   margin-top: 0px;
 }
@@ -776,18 +789,17 @@ nav.container .contents ul > li {
 
 nav.container .contents ul > li > p {
   margin-bottom: 0px;
+  transition: all 0.125s ease-in 0s;
 }
 
 nav.container .contents ul > li a {
   color: var(--color-text-light);
   text-decoration: none;
-  transition: all 0.125s ease-in 0s;
 }
 
 nav.container .contents ul > li a.isCurrent {
   color: var(--color-primary);
   font-weight: 600;
-  transform: scale(1.05);
 }
 
 nav.container .contents ul > li span {

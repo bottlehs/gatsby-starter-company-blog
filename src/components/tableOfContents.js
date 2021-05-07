@@ -1,17 +1,18 @@
-import React, { useMemo } from 'react';
-import cn from 'classnames';
+import React, { useMemo } from 'react'
+import cn from 'classnames'
 
 const TableOfContents = ({ items, currentHeaderUrl }) => {
   const replaceItems = useMemo(() => {
     if (currentHeaderUrl) {
+      console.log(items)
       return items.replace(
         `"${currentHeaderUrl}"`,
         `"${currentHeaderUrl}" class="isCurrent"`
-      );
+      )
     } else {
-      return items;
+      return items
     }
-  }, [currentHeaderUrl]);
+  }, [currentHeaderUrl])
   return items ? (
     <nav className={cn('table-of-contents', 'container')}>
       <h3 className={'title'}>Table of contents</h3>
@@ -20,7 +21,7 @@ const TableOfContents = ({ items, currentHeaderUrl }) => {
         dangerouslySetInnerHTML={{ __html: replaceItems }}
       />
     </nav>
-  ) : null;
+  ) : null
 }
 
 export default TableOfContents

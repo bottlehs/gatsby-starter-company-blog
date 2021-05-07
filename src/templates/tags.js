@@ -1,10 +1,13 @@
-import React from "react"
-import PropTypes from "prop-types"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import React from 'react'
+import PropTypes from 'prop-types'
+import Layout from '../components/layout'
+import SEO from '../components/seo'
 
 // Components
-import { Link, graphql } from "gatsby"
+import { Link, graphql } from 'gatsby'
+
+// Utilities
+import kebabCase from 'lodash/kebabCase'
 
 const Tags = ({ data, pageContext, location }) => {
   const siteTitle = data.site.siteMetadata.title
@@ -13,15 +16,15 @@ const Tags = ({ data, pageContext, location }) => {
   const posts = data.allMarkdownRemark.nodes
 
   const tagHeader = `${totalCount} post${
-    totalCount === 1 ? "" : "s"
+    totalCount === 1 ? '' : 's'
   } tagged with "${tag}"`
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title={tag} />      
+      <SEO title={tag} />
       <h2 className="tags-heading">{tagHeader}</h2>
       <ol style={{ listStyle: `none` }}>
-        {posts.map(post => {
+        {posts.map((post) => {
           const title = post.frontmatter.title || post.fields.slug
 
           return (
@@ -40,12 +43,30 @@ const Tags = ({ data, pageContext, location }) => {
                   <small>{post.frontmatter.date}</small>
                 </header>
                 <section>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: post.frontmatter.description || post.excerpt,
-                    }}
-                    itemProp="description"
-                  />
+                  {post.frontmatter.thumbnail && (
+                    <div className="post-list-thumbnail">
+                      <img src={post.frontmatter.thumbnail} alt="" />
+                    </div>
+                  )}
+                  <div className="post-list-content">
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: post.frontmatter.description || post.excerpt,
+                      }}
+                      itemProp="description"
+                    />
+                    {post.frontmatter.tags && (
+                      <ul>
+                        {post.frontmatter.tags.map((tag) => {
+                          return (
+                            <li key={tag}>
+                              <a href={`/tags/${kebabCase(tag)}/`}>{tag}</a>
+                            </li>
+                          )
+                        })}
+                      </ul>
+                    )}
+                  </div>
                 </section>
               </article>
             </li>
@@ -88,7 +109,7 @@ export const pageQuery = graphql`
       siteMetadata {
         title
       }
-    }    
+    }
     allMarkdownRemark(
       limit: 2000
       sort: { fields: [frontmatter___date], order: DESC }
@@ -107,6 +128,7 @@ export const pageQuery = graphql`
           description
           tags
           thumbnail
+          writer
         }
       }
     }

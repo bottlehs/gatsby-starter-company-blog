@@ -5,9 +5,9 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-import React from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
-import Image from "gatsby-image"
+import React from 'react'
+import { useStaticQuery, graphql, Link } from 'gatsby'
+import Image from 'gatsby-image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRssSquare } from '@fortawesome/free-solid-svg-icons'
 import {
@@ -17,7 +17,7 @@ import {
   faFacebookSquare,
 } from '@fortawesome/free-brands-svg-icons'
 
-const Bio = ({writer}) => {
+const Bio = ({ writer }) => {
   const data = useStaticQuery(graphql`
     query BioQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
@@ -37,25 +37,25 @@ const Bio = ({writer}) => {
             github
             instagram
             twitter
-            facebook  
+            facebook
           }
         }
       }
     }
   `)
 
-  console.log(writer);
+  console.log(writer)
 
   // Set these values by editing "siteMetadata" in gatsby-config.js
   const author = data.site.siteMetadata.author
   const social = data.site.siteMetadata.social
   const avatar = data.avatar.childImageSharp.fixed
 
-  if ( !writer ) {
-    writer = {};
-    writer.name = author.name;
-  } else if ( !writer.name ) {
-    writer.name = author.name;
+  if (!writer) {
+    writer = {}
+    writer.name = author.name
+  } else if (!writer.name) {
+    writer.name = author.name
   }
 
   return (
@@ -73,48 +73,64 @@ const Bio = ({writer}) => {
       {author.name && (
         <div>
           <p>
-            Written by{" "}
-            <Link to={"/"} className="bio-avatar-name">
+            Written by{' '}
+            <Link to={'/'} className="bio-avatar-name">
               @{writer.name}
-            </Link>{" "}
+            </Link>{' '}
           </p>
           {author.summary && (
             <p className="bio-introduction">{author.summary}</p>
           )}
           <ul className="bio-social">
-          <li>
-              <Link to={`/rss.xml`} target="_blank" itemProp="url" className="social-icon-rss">
-               <FontAwesomeIcon icon={faRssSquare}  />
-              </Link>
-            </li>            
-          {social.github && (
             <li>
-              <Link to={social.github} target="_blank" itemProp="url" className="social-icon-github">
-               <FontAwesomeIcon icon={faGithubSquare}  />
-              </Link>
+              <a href={`/rss.xml`} target="_blank" class="social-icon-rss">
+                <FontAwesomeIcon icon={faRssSquare} />
+              </a>
             </li>
-          )}
-          {social.instagram && (
-            <li>
-              <Link to={social.instagram} target="_blank" itemProp="url" className="social-icon-instagram">
-                <FontAwesomeIcon icon={faInstagramSquare}  />
-              </Link>
-            </li>
-          )}
-          {social.twitter && (
-            <li>
-              <Link to={social.twitter} target="_blank" itemProp="url" className="social-icon-twitter">
-               <FontAwesomeIcon icon={faTwitterSquare}  />
-              </Link>
-            </li>
-          )}
-          {social.facebook && (
-            <li>
-              <Link to={social.facebook} target="_blank" itemProp="url" className="social-icon-facebook">
-               <FontAwesomeIcon icon={faFacebookSquare}  />
-              </Link>
-            </li>
-          )}
+            {social.github && (
+              <li>
+                <a
+                  href={social.github}
+                  target="_blank"
+                  class="social-icon-github"
+                >
+                  <FontAwesomeIcon icon={faGithubSquare} />
+                </a>
+              </li>
+            )}
+            {social.instagram && (
+              <li>
+                <a
+                  href={social.instagram}
+                  target="_blank"
+                  class="social-icon-instagram"
+                >
+                  <FontAwesomeIcon icon={faInstagramSquare} />
+                </a>
+              </li>
+            )}
+            {social.twitter && (
+              <li>
+                <a
+                  href={social.twitter}
+                  target="_blank"
+                  class="social-icon-twitter"
+                >
+                  <FontAwesomeIcon icon={faTwitterSquare} />
+                </a>
+              </li>
+            )}
+            {social.facebook && (
+              <li>
+                <a
+                  href={social.facebook}
+                  target="_blank"
+                  class="social-icon-facebook"
+                >
+                  <FontAwesomeIcon icon={faFacebookSquare} />
+                </a>
+              </li>
+            )}
           </ul>
         </div>
       )}
