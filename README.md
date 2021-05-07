@@ -136,6 +136,7 @@ src
 ### 🍭 Tips (You can change...)
 
 - Profile image! (replace file in `/content/assets/profile-pic.png`)
+- Logo image! (replace file in `/content/assets/logo-pic.png`)
 - Favicon image! (replace file in `/content/assets/app-icon.png`)
 - Utterances repository! (replace repository address in `/gatsby-meta-config.js`)
   - ⚠️ Please check, this guide(<https://utteranc.es/>)
