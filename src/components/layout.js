@@ -1,28 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 import { useStaticQuery, Link } from 'gatsby'
-import Image from "gatsby-image"
+import Image from 'gatsby-image'
 import { ThemeToggler } from 'gatsby-plugin-dark-mode'
 import { RiSunFill, RiMoonClearFill } from 'react-icons/ri'
 
 const Layout = ({ location, title, children }) => {
-  const [currentOffsetY, setCurrentOffsetY] = useState(undefined);
+  const [currentOffsetY, setCurrentOffsetY] = useState(undefined)
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentOffsetY = window.pageYOffset;      
-      setCurrentOffsetY(currentOffsetY);
-    };
-    window.addEventListener('scroll', handleScroll);
+      const currentOffsetY = window.pageYOffset
+      setCurrentOffsetY(currentOffsetY)
+    }
+    window.addEventListener('scroll', handleScroll)
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
   const data = useStaticQuery(graphql`
     query LayoutQuery {
       logo: file(absolutePath: { regex: "/logo-pic.png/" }) {
         childImageSharp {
-          fixed( height: 30, quality: 95) {
+          fixed(height: 30, quality: 95) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -34,7 +34,7 @@ const Layout = ({ location, title, children }) => {
           }
           copyright
         }
-      }      
+      }
     }
   `)
 
@@ -44,7 +44,9 @@ const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
 
   const isRootPath =
-    location.pathname === rootPath || location.pathname === '/tech' || location.pathname === '/news'
+    location.pathname === rootPath ||
+    location.pathname === '/tech' ||
+    location.pathname === '/news'
   let navBarHeader
   let header
 
@@ -53,10 +55,7 @@ const Layout = ({ location, title, children }) => {
       <h1 className="navbar-heading">
         {title}
         <Link to="/" title={title}>
-          <Image
-            fixed={logo}
-            alt={author.name || ``}
-          />
+          <Image fixed={logo} alt={author.name || ``} />
         </Link>
       </h1>
     )
@@ -64,10 +63,7 @@ const Layout = ({ location, title, children }) => {
     navBarHeader = (
       <Link to="/" title={title}>
         {title}
-        <Image
-          fixed={logo}
-          alt={author.name || ``}
-        />
+        <Image fixed={logo} alt={author.name || ``} />
       </Link>
     )
 
@@ -80,11 +76,9 @@ const Layout = ({ location, title, children }) => {
 
   return (
     <div>
-      <div className={"navbar " + (currentOffsetY ? 'navbar-sticky' : '')}>
+      <div className={'navbar ' + (currentOffsetY ? 'navbar-sticky' : '')}>
         <div className="navbar-container">
-          <div className="logo">
-            { navBarHeader }
-          </div>
+          <div className="logo">{navBarHeader}</div>
           <div className="menu">
             <ul>
               <li>
@@ -103,19 +97,18 @@ const Layout = ({ location, title, children }) => {
             <ThemeToggler>
               {({ theme, toggleTheme }) => (
                 <div>
-                <input
-                  id="toggle"
-                  type="checkbox"
-                  onChange={e => toggleTheme(e.target.checked ? 'dark' : 'light')}
-                  checked={theme === 'dark'}
-                />{' '}
-                <label for="toggle">
-                  {theme === 'dark' 
-                    ? <RiSunFill />                  
-                    : <RiMoonClearFill />
-                  }
-                </label>
-              </div>
+                  <input
+                    id="toggle"
+                    type="checkbox"
+                    onChange={(e) =>
+                      toggleTheme(e.target.checked ? 'dark' : 'light')
+                    }
+                    checked={theme === 'dark'}
+                  />{' '}
+                  <label for="toggle">
+                    {theme === 'dark' ? <RiSunFill /> : <RiMoonClearFill />}
+                  </label>
+                </div>
               )}
             </ThemeToggler>
           </div>
