@@ -273,15 +273,15 @@ a:focus {
   white-space: nowrap;
   font-size: var(--fontSize-1);
   line-height: 1;
-  font-weight: var(--fontWeight-medium);
+  font-weight: var(--fontWeight-normal);
   transition: all 0.15s ease-in-out 0s;
   text-decoration: none;
   color: var(--color-text-light);
 }
 
 .navbar-container .menu ul li a.active-link {
-  color: rgb(41, 41, 41);
-  font-weight: 500;
+  color: var(--color-text);
+  font-weight: var(--fontWeight-medium);
 }
 
 /* theme */

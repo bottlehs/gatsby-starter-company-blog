@@ -42,7 +42,7 @@ const Layout = ({ location, title, children }) => {
   const author = data.site.siteMetadata.author
   const logo = data.logo.childImageSharp.fixed
   const rootPath = `${__PATH_PREFIX__}/`
-  console.log(location.pathname)
+
   const isRootPath =
     location.pathname === rootPath || location.pathname === '/tech' || location.pathname === '/news'
   let navBarHeader
@@ -88,12 +88,12 @@ const Layout = ({ location, title, children }) => {
           <div className="menu">
             <ul>
               <li>
-                <Link className="" to="/tech">
+                <Link className="" to="/tech" activeClassName="active-link">
                   Tech
                 </Link>
               </li>
               <li>
-                <Link className="" to="/news">
+                <Link className="" to="/news" activeClassName="active-link">
                   News
                 </Link>
               </li>
