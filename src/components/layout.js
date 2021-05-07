@@ -1,24 +1,76 @@
-import React from 'react'
-import { Link } from 'gatsby'
+import React, { useEffect, useState } from 'react';
+import { useStaticQuery, Link } from 'gatsby'
+import Image from "gatsby-image"
 import { ThemeToggler } from 'gatsby-plugin-dark-mode'
 import { RiSunFill, RiMoonClearFill } from 'react-icons/ri'
 
 const Layout = ({ location, title, children }) => {
+  const [currentOffsetY, setCurrentOffsetY] = useState(undefined);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentOffsetY = window.pageYOffset;      
+      setCurrentOffsetY(currentOffsetY);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const data = useStaticQuery(graphql`
+    query LayoutQuery {
+      logo: file(absolutePath: { regex: "/logo-pic.png/" }) {
+        childImageSharp {
+          fixed( height: 30, quality: 95) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      site {
+        siteMetadata {
+          author {
+            name
+          }
+          copyright
+        }
+      }      
+    }
+  `)
+
+  const copyright = data.site.siteMetadata.copyright
+  const author = data.site.siteMetadata.author
+  const logo = data.logo.childImageSharp.fixed
   const rootPath = `${__PATH_PREFIX__}/`
-  console.log(location.pathname)
+
   const isRootPath =
     location.pathname === rootPath || location.pathname === '/tech' || location.pathname === '/news'
+  let navBarHeader
   let header
 
   if (isRootPath) {
-    header = (
-      <h1 className="main-heading">
+    navBarHeader = (
+      <h1 className="navbar-heading">
+        {title}
         <Link to="/" title={title}>
-          {title}
+          <Image
+            fixed={logo}
+            alt={author.name || ``}
+          />
         </Link>
       </h1>
     )
   } else {
+    navBarHeader = (
+      <Link to="/" title={title}>
+        {title}
+        <Image
+          fixed={logo}
+          alt={author.name || ``}
+        />
+      </Link>
+    )
+
     header = (
       <Link className="header-link-home" to="/" title={title}>
         {title}
@@ -28,22 +80,20 @@ const Layout = ({ location, title, children }) => {
 
   return (
     <div>
-      <div className="navbar">
+      <div className={"navbar " + (currentOffsetY ? 'navbar-sticky' : '')}>
         <div className="navbar-container">
           <div className="logo">
-            <a href="">
-              <img src="/static/b0059e14d98bced5c806c552ae09b998/318fd/profile-pic.png"></img>
-            </a>
+            { navBarHeader }
           </div>
           <div className="menu">
             <ul>
               <li>
-                <Link className="" to="/tech">
+                <Link className="" to="/tech" activeClassName="active-link">
                   Tech
                 </Link>
               </li>
               <li>
-                <Link className="" to="/news">
+                <Link className="" to="/news" activeClassName="active-link">
                   News
                 </Link>
               </li>
@@ -72,13 +122,12 @@ const Layout = ({ location, title, children }) => {
         </div>
       </div>
       <div className="global-wrapper" data-is-root-path={isRootPath}>
-        <header className="global-header">{header}</header>
         <main>{children}</main>
         <footer>
           © {new Date().getFullYear()}, Built with
           {` `}
           <a href="https://gatsby-starter-company-blog.netlify.app">
-            Gatsby Starter Company Blog
+            {copyright}
           </a>
         </footer>
       </div>

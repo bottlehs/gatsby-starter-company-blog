@@ -205,9 +205,15 @@ a:focus {
 
 /* navBar */
 .navbar {
-  position: relative;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
   z-index: 99999;
   transition: all 0.25s ease-in-out 0s;
+}
+
+.navbar.navbar-sticky {
+  box-shadow: rgb(0 0 0 / 8%) 0px 0px 15px;
 }
 
 .navbar-container {
@@ -218,7 +224,7 @@ a:focus {
   justify-content: space-between;
   padding: 30px 75px;
   background-color: rgb(255, 255, 255);
-  transition: all 0.25s ease-in-out 0s;
+  transition: none;
 }
 
 .navbar-container .logo {
@@ -226,10 +232,21 @@ a:focus {
   flex-shrink: 0;
 }
 
+.navbar-container .logo a {
+  font-size: 0px;
+  height: 30px;
+  display: block;
+}
+
 .navbar-container .logo a img {
   display: block;
   width: auto;
   height: 30px;
+}
+
+.navbar-container .logo .navbar-heading {
+  font-size: 0px;
+  margin: 0;
 }
 
 .navbar-container .menu {
@@ -256,15 +273,15 @@ a:focus {
   white-space: nowrap;
   font-size: var(--fontSize-1);
   line-height: 1;
-  font-weight: var(--fontWeight-medium);
+  font-weight: var(--fontWeight-normal);
   transition: all 0.15s ease-in-out 0s;
   text-decoration: none;
   color: var(--color-text-light);
 }
 
 .navbar-container .menu ul li a.active-link {
-  color: rgb(41, 41, 41);
-  font-weight: 500;
+  color: var(--color-text);
+  font-weight: var(--fontWeight-medium);
 }
 
 /* theme */
@@ -301,15 +318,6 @@ a:focus {
 
 .global-wrapper[data-is-root-path='true'] .bio {
   margin-bottom: var(--spacing-10);
-}
-
-.global-header {
-  margin-bottom: var(--spacing-12);
-}
-
-.main-heading {
-  font-size: var(--fontSize-6);
-  margin: 0;
 }
 
 .tags-heading {
@@ -854,10 +862,6 @@ nav.container .contents ul > li span {
 }
 
 @media (max-width: 768px) {
-  .main-heading {
-    font-size: var(--fontSize-4);
-  }
-
   .tags-heading {
     font-size: var(--fontSize-4);
   }
