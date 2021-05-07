@@ -3,6 +3,8 @@ import { useStaticQuery, Link } from 'gatsby'
 import Image from 'gatsby-image'
 import { ThemeToggler } from 'gatsby-plugin-dark-mode'
 import { RiSunFill, RiMoonClearFill } from 'react-icons/ri'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faRss } from '@fortawesome/free-solid-svg-icons'
 
 const Layout = ({ location, title, children }) => {
   const [currentOffsetY, setCurrentOffsetY] = useState(undefined)
@@ -90,6 +92,11 @@ const Layout = ({ location, title, children }) => {
                 <Link className="" to="/news" activeClassName="active-link">
                   News
                 </Link>
+              </li>
+              <li className="rss-icon">
+                <a href="/rss.xml" target="_blank">
+                  <FontAwesomeIcon icon={faRss} />
+                </a>
               </li>
             </ul>
           </div>

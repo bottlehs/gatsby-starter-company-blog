@@ -263,6 +263,14 @@ a:focus {
   margin-top: 0;
 }
 
+.navbar-container .menu ul li.rss-icon {
+  margin: 0px 0px 0px 20px;
+}
+
+.navbar-container .menu ul li.rss-icon a {
+  padding: 5px 0px;
+}
+
 .navbar-container .menu ul li {
   margin: 0px 20px;
   list-style: none;
