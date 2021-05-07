@@ -233,6 +233,7 @@ a:focus {
 }
 
 .navbar-container .logo a {
+  font-size: 0px;
   height: 30px;
   display: block;
 }
@@ -244,7 +245,7 @@ a:focus {
 }
 
 .navbar-container .logo .navbar-heading {
-  font-size: var(--fontSize-0);
+  font-size: 0px;
   margin: 0;
 }
 

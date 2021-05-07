@@ -32,11 +32,13 @@ const Layout = ({ location, title, children }) => {
           author {
             name
           }
+          copyright
         }
       }      
     }
   `)
 
+  const copyright = data.site.siteMetadata.copyright
   const author = data.site.siteMetadata.author
   const logo = data.logo.childImageSharp.fixed
   const rootPath = `${__PATH_PREFIX__}/`
@@ -49,6 +51,7 @@ const Layout = ({ location, title, children }) => {
   if (isRootPath) {
     navBarHeader = (
       <h1 className="navbar-heading">
+        {title}
         <Link to="/" title={title}>
           <Image
             fixed={logo}
@@ -60,6 +63,7 @@ const Layout = ({ location, title, children }) => {
   } else {
     navBarHeader = (
       <Link to="/" title={title}>
+        {title}
         <Image
           fixed={logo}
           alt={author.name || ``}
@@ -123,7 +127,7 @@ const Layout = ({ location, title, children }) => {
           © {new Date().getFullYear()}, Built with
           {` `}
           <a href="https://gatsby-starter-company-blog.netlify.app">
-            Gatsby Starter Company Blog
+            {copyright}
           </a>
         </footer>
       </div>

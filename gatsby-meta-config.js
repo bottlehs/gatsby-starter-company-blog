@@ -4,6 +4,7 @@ module.exports = {
     name: `Your Company Name`,
     summary: `Your Company Summary`,
   },
+  copyright: `bottlehs`,
   description: `Your Company Description`,
   siteUrl: `https://gatsby-starter-company-blog.netlify.app`,
   social: {
